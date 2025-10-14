@@ -1,0 +1,2 @@
+FileMode.writeOnly: Write-only operation
+FileMode.writeOnlyAppend: Append-only operation
