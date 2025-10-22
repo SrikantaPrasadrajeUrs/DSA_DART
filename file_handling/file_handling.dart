@@ -172,6 +172,25 @@ Future<void> main() async {
     print('❌ Gracefully handled file read error: $e');
   }
 
+  try {
+    final dataFile = File('data/data.txt');
+    // syncronous
+    if(dataFile.existsSync()) {
+      dataFile.deleteSync();
+      print("File deleted succesfully");
+    }else{
+      print("No file found with name data.txt");
+      dataFile.createSync();
+      print("File created succesfully");
+    }
+    // asyncronous
+    await dataFile.exists().then((fileExist)=>{
+      if(fileExist)dataFile.delete().then((_)=>print("File deleted succesfully"))
+    });
+  } catch (e) {
+    print('❌ Gracefully handled file read error: $e');
+  }
+
   // ============================================================
   // 7. PRO TIP
   // ============================================================
